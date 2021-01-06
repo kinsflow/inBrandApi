@@ -4,11 +4,11 @@ namespace appClasses\parentClasses;
 
 abstract class Manipulate
 {
-    public $image;
+    public $image_id;
 
-    public function __construct($image)
+    public function __construct($image_id)
     {
-        $this->image = $image;
+        $this->image_id = $image_id;
     }
 
     abstract public function processImageManipulation();

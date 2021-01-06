@@ -8,13 +8,16 @@
     }
   ],
   "require": {
-    "nesbot/carbon": "^2.43.0"
+    "nesbot/carbon": "^2.43.0",
+    "vlucas/phpdotenv": "5.1.x-dev",
+    "ext-json": "*"
   },
   "autoload": {
     "psr-4": {
       "appClasses\\": "appClasses/",
       "api\\": "api/",
-      "traits\\": "traits"
+      "traits\\": "traits/",
+      "database\\": "database/"
     }
   }
 }

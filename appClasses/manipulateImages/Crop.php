@@ -8,6 +8,6 @@ class Crop extends Manipulate
 {
     public function processImageManipulation()
     {
-        var_dump('from crop.php', $this->image);
+        var_dump('from crop.php', $this->image_id);
     }
 }

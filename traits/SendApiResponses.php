@@ -32,14 +32,13 @@ trait SendApiResponses
      */
     public function failureResponse(string $message, int $code = null, array $data = [])
     {
-        $statusCode = (empty($code) || $code == 0) ? http_response_code(400) : http_response_code($code);
-
+        (empty($code) || $code == 0) ? http_response_code(400) : http_response_code($code);
         header('Content-type: application/json');
-        return json_decode((string)[
-            'status' => $statusCode,
+        return json_encode([
+            'status' => http_response_code(),
             'message' => $message ?? 'Request failed',
             'data' => $data
-        ], $statusCode);
+        ], http_response_code());
     }
 
 }

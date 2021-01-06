@@ -2,6 +2,7 @@
 
 namespace api;
 
+use appClasses\Handler;
 use appClasses\manipulateImages\Crop;
 
 require_once '../vendor/autoload.php';

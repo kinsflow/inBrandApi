@@ -8,6 +8,6 @@ class Rotate extends Manipulate
 {
     public function processImageManipulation()
     {
-        var_dump('from rotate.php', $this->image);
+        var_dump('from rotate.php', $this->image_id);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace api;
 
+use appClasses\Handler;
 use appClasses\manipulateImages\Rotate;
 
 require_once '../vendor/autoload.php';

@@ -3,6 +3,8 @@
 namespace database;
 
 
+use Dotenv\Dotenv;
+
 class QueryController
 {
     public $link;
@@ -17,8 +19,9 @@ class QueryController
 
     private function connectDB()
     {
+        Dotenv::createImmutable($_SERVER['DOCUMENT_ROOT'])->load();
 
-        $this->link = new mysqli(getenv('DB_HOST'), getenv('DB_USERNAME'), getenv('DB_PASSWORD'), getenv('DB_DATABASE'));
+        $this->link = new \mysqli($_ENV['DB_HOST'], $_ENV['DB_USERNAME'], $_ENV['DB_PASSWORD'], $_ENV['DB_DATABASE']);
 
         if (!$this->link) {
 

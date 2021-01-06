@@ -1,6 +1,6 @@
 <?php
 
-namespace api;
+namespace appClasses;
 
 use appClasses\parentClasses\Manipulate;
 
