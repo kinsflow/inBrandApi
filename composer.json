@@ -1,0 +1,20 @@
+{
+  "name": "vendor/inbranded",
+  "description": "role suitability challenge",
+  "authors": [
+    {
+      "name": "kinsflow",
+      "email": "kingsley.davidakindele@gmail.com"
+    }
+  ],
+  "require": {
+    "nesbot/carbon": "^2.43.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "appClasses\\": "appClasses/",
+      "api\\": "api/",
+      "traits\\": "traits"
+    }
+  }
+}
