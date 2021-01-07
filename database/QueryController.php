@@ -40,7 +40,6 @@ class QueryController
         } else {
             return false;
         }
-
     }
 
     // Create Data in to the database
