@@ -3,37 +3,40 @@
 
 namespace appClasses;
 
-use database\repository\GetImageByIdRepo;
+use database\repository\ImageRepository;
 use traits\SendApiResponses;
 
 class Images
 {
     use SendApiResponses;
 
-    protected $protocol;
 
-    public function __construct()
-    {
-        $this->protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != "off") ? "https" : "http";
-    }
 
     public function getAnImage($id)
     {
-        $image_repo = new GetImageByIdRepo;
-        $selected_image_path = $image_repo($id)->fetch_assoc()["file_path"];
+        $image_repo = new ImageRepository();
+        $fetch_response = $image_repo->getById($id)->fetch_assoc();
+        $selected_image_path = $fetch_response["file_path"];
 
-        $selected_image = $this->structureImage($selected_image_path);
-        echo $this->successResponse($selected_image);
+        $selected_image = $image_repo->getImageByPathName($selected_image_path);
+
+        $arr = [];
+        $arr['id'] = $fetch_response['id'];
+        $arr['image'] = $selected_image;
+
+        echo $this->successResponse($arr);
     }
 
     public function getAllImage()
     {
-        echo "get all image";
+        $image_repo = new ImageRepository();
+        $fetch_response = $image_repo->getAll();
+        while($row = $fetch_response->fetch_object()) {
+            $row->image = $image_repo->getImageByPathName($row->image);
+            $arr[] = $row;
+        }
+        echo $this->successResponse($arr);
     }
 
-    protected function structureImage($image_path)
-    {
-        $docs_root = $_SERVER['SERVER_NAME'];
-        return $this->protocol . "://" . $docs_root . '/' . $image_path;
-    }
+
 }

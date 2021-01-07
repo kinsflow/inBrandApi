@@ -13,9 +13,9 @@ trait SendApiResponses
     public function successResponse($data, string $message = null)
     {
         $array = [
-            'data' => $data,
             'status' => http_response_code(200),
             'message' => $message ?? 'Successful',
+            'data' => $data,
         ];
 
         header('Content-type: application/json');

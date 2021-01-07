@@ -10,7 +10,9 @@
   "require": {
     "nesbot/carbon": "^2.43.0",
     "vlucas/phpdotenv": "5.1.x-dev",
-    "ext-json": "*"
+    "ext-json": "*",
+    "ext-mysqli": "*",
+    "ext-gd": "*"
   },
   "autoload": {
     "psr-4": {
