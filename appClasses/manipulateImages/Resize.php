@@ -31,7 +31,7 @@ class Resize extends Manipulate
     private function resizeImage($image)
     {
         try {
-            $original_image = imagecreatefrompng($image);
+            $original_image = imagecreatefromjpeg($image);
 
             $original_width = imagesx($original_image);
             $original_height = imagesy($original_image);
