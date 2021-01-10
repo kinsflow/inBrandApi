@@ -30,32 +30,28 @@ class Resize extends Manipulate
 
     private function resizeImage($image)
     {
-        try {
-            $original_image = imagecreatefromjpeg($image);
+        $original_image = imagecreatefromjpeg($image);
 
-            $original_width = imagesx($original_image);
-            $original_height = imagesy($original_image);
+        $original_width = imagesx($original_image);
+        $original_height = imagesy($original_image);
 
-            $ratio = $this->max_res / $original_width;
-            $new_width = $this->max_res;
-            $new_height = $original_height * $ratio;
+        $ratio = $this->max_res / $original_width;
+        $new_width = $this->max_res;
+        $new_height = $original_height * $ratio;
 
-            if ($new_height > $this->max_res) {
-                $ratio = $this->max_res / $original_height;
-                $new_height = $this->max_res;
-                $new_width = $original_width * $ratio;
-            }
+        if ($new_height > $this->max_res) {
+            $ratio = $this->max_res / $original_height;
+            $new_height = $this->max_res;
+            $new_width = $original_width * $ratio;
+        }
 
-            if ($original_image) {
-                $new_image = imagecreatetruecolor($new_width, $new_height);
-                imagecopyresampled($new_image, $original_image, 0, 0, 0, 0, $new_width, $new_height, $original_width, $original_height);
+        if ($original_image) {
+            $new_image = imagecreatetruecolor($new_width, $new_height);
+            imagecopyresampled($new_image, $original_image, 0, 0, 0, 0, $new_width, $new_height, $original_width, $original_height);
 
-                imagejpeg($new_image, $image, 90);
+            imagejpeg($new_image, $image, 90);
 
-                echo $this->successResponse("Image Resizing Successful");
-            }
-        }catch (\Exception $exception){
-            return $exception->getMessage();
+            echo $this->successResponse("Image Resizing Successful");
         }
     }
 }
