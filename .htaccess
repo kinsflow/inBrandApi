@@ -12,7 +12,7 @@ RewriteRule ^api/resize/([0-9]+)?$ api/resize.php?id=$1 [QSA]
 RewriteRule ^api/rotate/([0-9]+)?$ api/rotate.php?id=$1 [QSA]
 RewriteRule ^api/crop/([0-9]+)?$ api/crop.php?id=$1 [QSA]
 
+RewriteRule ^api/export/([0-9]+)?$ api/export.php?id=$1 [QSA]
+
 RewriteRule ^api/images/([0-9]+)?$ api/images.php?id=$1 [QSA]
 RewriteRule ^api/images/?$ api/images.php [QSA]
-#
-#RewriteRule ^api/export/([0-9]+)?$
