@@ -18,11 +18,12 @@ class Images
         $fetch_response = $image_repo->getById($id)->fetch_assoc();
         $selected_image_path = $fetch_response["file_path"];
 
-        $selected_image = $this->structureImage($selected_image_path);
+        $selected_image = $image_repo->getImageByPathName($selected_image_path);
 
         $arr = [];
         $arr['id'] = $fetch_response['id'];
         $arr['image'] = $selected_image;
+
 
         echo $this->successResponse($arr);
     }

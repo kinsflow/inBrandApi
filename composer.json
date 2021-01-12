@@ -12,7 +12,8 @@
     "vlucas/phpdotenv": "5.1.x-dev",
     "ext-json": "*",
     "ext-mysqli": "*",
-    "ext-gd": "*"
+    "ext-gd": "*",
+    "ext-fileinfo": "*"
   },
   "autoload": {
     "psr-4": {

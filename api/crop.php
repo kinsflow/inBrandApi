@@ -12,7 +12,7 @@ try {
 
         $handler = new Handler();
 
-        return $handler(new Crop($_FILES['pics']));
+        return $handler(new Crop($_GET['id'], $_GET['height'], $_GET['width']));
     } else {
         throw new \Exception("Incorrect method $request_method. Method POST is required for this request");
     }

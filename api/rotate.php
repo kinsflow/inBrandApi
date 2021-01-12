@@ -12,7 +12,7 @@ try {
 
         $handler = new Handler();
 
-        return $handler(new Rotate($_FILES['pics']));
+        return $handler(new Rotate($_GET['id'], $_GET['degree']));
     } else {
         throw new \Exception("Incorrect method $request_method. Method POST is required for this request");
     }

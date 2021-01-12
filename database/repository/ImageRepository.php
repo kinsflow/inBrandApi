@@ -31,4 +31,10 @@ class ImageRepository // todo: Create a repository Interface and flip all depend
         $docs_root = $_SERVER['SERVER_NAME'];
         return $this->protocol . "://" . $docs_root . '/' . $image_path;
     }
+
+    public function getImageFromFile($image_path)
+    {
+        return '../' . $image_path;
+    }
+
 }
