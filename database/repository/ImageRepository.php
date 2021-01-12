@@ -36,4 +36,5 @@ class ImageRepository // todo: Create a repository Interface and flip all depend
     {
         return '../' . $image_path;
     }
+
 }
