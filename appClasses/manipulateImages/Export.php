@@ -31,15 +31,39 @@ class Export extends Manipulate
 
     public function exportImage($image)
     {
-        $file = file_get_contents($image);
-        $file_ext = substr(mime_content_type($image), strpos(mime_content_type($image), "/") + 1);
-        $file_name = pathinfo($image)['basename'];
+        $binary = imagecreatefromstring(file_get_contents($image));
+        $img_name = $this->removeExtensionFromImage($image);
+        $image_quality = 90;
 
-        $new_image = file_put_contents('../images/'.$file_name, $file);
+        switch ($this->format) {
+            case 'jpeg':
+                $binary = imagecreatefromstring(file_get_contents($image));
+                imageJpeg($binary, '../images/' . $img_name . '.' . $this->format, $image_quality);
+                return $img_name . '.' . $this->format;
 
-//        switch ($this->format) {
-//            case 'jpeg':
-//                imagejpeg($new_image, $image, 90)
-//        }
+            case 'png':
+                $image_quality = floor(10 - ($image_quality / 10));
+                ImagePNG($binary, '../images/' . $img_name . '.' . $this->format, $image_quality);
+                return $img_name . '.' . $this->format;
+
+            case 'pdf':
+
+
+            default:
+                return false;
+        }
+    }
+
+    public function removeExtensionFromImage($image)
+    {
+        $extension = $this->getImageType($image); //get extension
+        $only_name = basename($image, '.' . $extension); // remove extension
+        return $only_name;
+    }
+
+    protected function getImageType($target_file)
+    {
+        $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
+        return $imageFileType;
     }
 }
