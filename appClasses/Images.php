@@ -24,6 +24,7 @@ class Images
         $arr['id'] = $fetch_response['id'];
         $arr['image'] = $selected_image;
 
+
         echo $this->successResponse($arr);
     }
 

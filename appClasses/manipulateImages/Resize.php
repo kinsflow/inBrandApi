@@ -26,11 +26,13 @@ class Resize extends Manipulate
         $selected_image_address = $image_repo->getById((integer)$this->image_id)->fetch_assoc();
         $image_path = $image_repo->getImageFromFile($selected_image_address['file_path']);
         $this->resizeImage($image_path);
+
     }
 
     private function resizeImage($image)
     {
         $original_image = imagecreatefromjpeg($image);
+
 
         $original_width = imagesx($original_image);
         $original_height = imagesy($original_image);
@@ -52,6 +54,7 @@ class Resize extends Manipulate
             imagejpeg($new_image, $image, 90);
 
             echo $this->successResponse("Image Resizing Successful");
+
         }
     }
 }
